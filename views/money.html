@@ -1,0 +1,71 @@
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Where your money goes</h1>
+            <h3>Payments made by Chichester District Council to individual suppliers with a value over £550 made within
+                October.</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-inline">
+                <input ng-submit="getData(true)" ng-model="data.filter.query" placeholder="Search suppliers" type="text"
+                       class="form-control">
+                <div class="select-wrapper">
+                    <select ng-model="data.filter.rating"
+                            ng-options="rate.value as rate.caption for rate in data.ratings track by rate.value">
+                        <option value="">Select pound rating</option>
+                    </select>
+                </div>
+                <div class="btn-group-inline">
+                    <button class="btn btn-reset" ng-click="resetData()">Reset</button>
+                    <button class="btn btn-search" ng-click="getData(true)">Search</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="panel panel-default row">
+        <div class="col-xs-12 table-content table-responsive">
+            <div class="loading" ng-show="controls.loading"></div>
+            <table cellspacing="0" class="table-block-mobile" ng-hide="controls.loading">
+                <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Pound Rating</th>
+                    <th>Reference</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="payment in data.payments" ng-click='toggleModal(payment)'>
+                    <td data-label="Supplier" class="text-center">{{ payment.payment_supplier }}</td>
+                    <td data-label="Pound Rating" class="text-right pound-cell">
+                        <pound-rating ng-model="payment.payment_cost_rating"></pound-rating>
+                    </td>
+                    <td data-label="Reference" class="text-left">{{ payment.payment_ref }}</td>
+                    <td data-label="Value" class="text-right">{{ payment.payment_amount | currency:'£' }}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-centered">
+            <pagination-bar left="data.pagination.left" right="data.pagination.right" ng-model="data.filter.page"
+                            total="data.pagination.total" on-page-select="getData(filter)"></pagination-bar>
+        </div>
+    </div>
+
+    <ng-modal show="controls.modalShown">
+        <ul>
+            <li data-label="Suplier" class="text-center">{{ controls.modalData.payment_supplier }}</li>
+            <pound-rating ng-model="controls.modalData.payment_cost_rating"></pound-rating>
+            <li data-label="Reference" class="text-left">{{ controls.modalData.payment_ref }}</li>
+            <li data-label="Value" class="text-right">{{ controls.modalData.payment_amount | currency:'£' }}</li>
+        </ul>
+    </ng-modal>
+</div>

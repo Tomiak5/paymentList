@@ -1,0 +1,17 @@
+<nav>
+    <ul class="pagination">
+        <li ng-class="getClass('left')" ng-disabled="isDisabled('left')" ng-click="prevPage()">
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&lsaquo;</span>
+            </a>
+        </li>
+        <li ng-repeat="page in pages" ng-click="changePage(page.index)" ng-class="getCurrentPageClass(page.index)">
+            <a href="#">{{ page.index + 1 }}</a>
+        </li>
+        <li ng-class="getClass('right')" ng-disabled="isDisabled('right')" ng-click="nextPage()">
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&rsaquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

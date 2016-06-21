@@ -1,0 +1,13 @@
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+
+### idea ###
+.idea
+
+start-server.bat
+
+

@@ -1,0 +1,54 @@
+.pound {
+    border-radius: 20px;
+    background-color: #1b6d85;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #8a8a8a;
+    margin: 2px;
+    font-weight: bold;
+    padding: 1px;
+    background: #1b6d85; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#fff,#dcdede); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff,#dcdede); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff,#dcdede); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff,#dcdede); /* Standard syntax */
+    font-size: large;
+    font-family: SourceSansProRegular !important;
+}
+
+.pound.filled {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#64c0ea,#4c95dc); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#64c0ea,#4c95dc); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#64c0ea,#4c95dc); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#64c0ea,#4c95dc); /* Standard syntax */
+}
+
+.pound-text {
+    margin-top: 4px;
+    position: relative;
+    text-align: center;
+}
+
+.pound.filled > .pound-text {
+    color: white;
+}
+
+ul.pound-rating {
+    padding: 0px;
+}
+
+@media screen and (max-width: 1040px) {
+    .pound {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pound-text {
+        margin-top: 0px;
+        font-size: 12px;
+    }
+
+}
